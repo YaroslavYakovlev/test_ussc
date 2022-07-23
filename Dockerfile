@@ -45,7 +45,11 @@ RUN echo "===> Compiling zeek..." \
   && make install
 
   RUN echo "===> Installing zeek-hello package..." \
-    && cd /home/yar/workspace/TestZeek/zeek \
+    && cd /tmp/test_zeek_hello \
+    && git clone https://github.com/YaroslavYakovlev/test_ussc.git \
+    && cd test_zeek_hello \
+    && make -j $(nproc) \
+    && make install \
     && zeek hello.zeek
 
 #   RUN echo "===> Installing zeek-llc package..." \
